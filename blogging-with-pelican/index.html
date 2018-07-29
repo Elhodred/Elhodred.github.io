@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alfonso Pinto's Notebook, A Developer's journey">
+
+        <link rel="alternate"  href="https://alfonso-pinto.com/feeds/all.atom.xml" type="application/atom+xml" title="Alfonso Pinto's Notebook Full Atom Feed"/>
+
+        <title>Blogging with Pelican // Alfonso Pinto's Notebook // A Developer's journey</title>
+
+    <!-- For Chrome for Android: -->
+    <link rel="icon" sizes="192x192" href="/touch-icon-192x192.png">
+    <link rel="icon" sizes="96x96" href="/touch-icon-96x96.png">
+    <link rel="icon" sizes="32x32" href="/touch-icon-32x32.png">
+    <link rel="icon" sizes="16x16" href="/touch-icon-16x16.png">
+    <!-- For iPhone 6 Plus with @3× display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/apple-touch-icon-180x180-precomposed.png">
+    <!-- For iPad with @2× display running iOS ≥ 7: -->
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/apple-touch-icon-152x152-precomposed.png">
+    <!-- For iPad with @2× display running iOS ≤ 6: -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144-precomposed.png">
+    <!-- For iPhone with @2× display running iOS ≥ 7: -->
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/apple-touch-icon-120x120-precomposed.png">
+    <!-- For iPhone with @2× display running iOS ≤ 6: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114-precomposed.png">
+    <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/apple-touch-icon-76x76-precomposed.png">
+    <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72x72-precomposed.png">
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://alfonso-pinto.com/theme/css/pure.css">
+    <link rel="stylesheet" href="https://alfonso-pinto.com/assets/tipuesearch/tipuesearch.css">
+    <link rel="stylesheet" href="https://alfonso-pinto.com/theme/css/pygments.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="https://alfonso-pinto.com/author/alfonso-pinto.html" title="See posts by Alfonso Pinto">
+                        <img class="article-avatar" alt="Alfonso Pinto" src="/images/profile.jpg">
+                </a>
+                <h2 class="article-info">Alfonso Pinto</h2>
+                <small class="about-author"></small>
+                <h5>Published</h5>
+                <p>Wed 25 July 2018</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Blogging with Pelican</h1>
+                        <p class="post-meta">
+                            // under                                 <a class="post-category" href="https://alfonso-pinto.com/tag/blog.html">blog</a>
+                                <a class="post-category" href="https://alfonso-pinto.com/tag/pelican.html">pelican</a>
+                                <a class="post-category" href="https://alfonso-pinto.com/tag/python.html">python</a>
+                        </p>
+                </header>
+            </section>
+            <p>The blog is made using <a href="https://blog.getpelican.com" target="_blank">Pelican</a> and it's published using <a href="https://pages.github.com" target="_blank">GitHub Pages</a>
+To create the basic setup I mostly followed <a href="https://fedoramagazine.org/make-github-pages-blog-with-pelican/" target="_blank">this guide</a>.</p>
+<h2>Install Pelican</h2>
+<p>To install Pelican you just need to install <em>pelican</em> and <em>markdown</em> python modules:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> pip install pelican markdown
+</pre></div>
+
+
+<p>You may need to use sudo, it depends on your setup.</p>
+<p>If you check Pelican docs, you will see that they recomend to use virtualenv. I didn't feel it necessary, but if you want to use it, be my guess.</p>
+<h2>Create a GitHub user page</h2>
+<p>GitHub allows to create <em>project pages</em> and one <em>user page</em>. <em>Project pages</em> are tied to a specific project while <em>user pages</em> are generic.</p>
+<p>The first step is to create 2 new repositories in your GitHub account. You know the drill, or just go <a href="https://github.com/new" target="_blank">here</a><br>
+Both of the repositories must be <em>Public</em> and initialized with a README file.<br>
+The first repository must be named <em>username.github.io</em>. Replace <em>username</em> with your username in GitHub. In my case, as my user is <em>Elhodred</em>, the repository is named <em>Elhodred.github.io</em>. This repository will contain the static site Pelican generates.<br>
+The second repository can be named as you want, but my recomendation is to name it <em>username.github.io-src</em>. In my case, it becomes <em>Elhodred.github.io-src</em>. This way we identity directly this repository for what it really is: the repository that holds the sources of the blog.</p>
+<h2>Setup the basic blog</h2>
+<p>Let's clone the source repository:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> git clone https://github.com/Elhodred/Elhodred.github.io-src.git
+<span class="gp">$</span> <span class="nb">cd</span> Elhodred.github.io-src/
+</pre></div>
+
+
+<p>Remember to replace the URL with the one for your repository.</p>
+<p>Now we will add the repository that will hold the site as a submodule:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> git submodule add https://github.com/Elhodred/Elhodred.github.io.git output
+</pre></div>
+
+
+<p>At this point, we can create our site:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> pelican-quickstart
+<span class="gp">&gt;</span> Where <span class="k">do</span> you want to create your new web site? <span class="o">[</span>.<span class="o">]</span>
+<span class="gp">&gt;</span> What will be the title of this web site? Elhodred<span class="se">\&#39;</span>s Notebook
+<span class="gp">&gt;</span> Who will be the author of this web site? Alfonso Pinto
+<span class="gp">&gt;</span> What will be the default language of this web site? <span class="o">[</span>en<span class="o">]</span>
+<span class="gp">&gt;</span> Do you want to specify a URL prefix? e.g., http://example.com   <span class="o">(</span>Y/n<span class="o">)</span> y
+<span class="gp">&gt;</span> What is your URL prefix? <span class="o">(</span>see above example<span class="p">;</span> no trailing slash<span class="o">)</span> https://elhodred.github.io
+<span class="gp">&gt;</span> Do you want to <span class="nb">enable</span> article pagination? <span class="o">(</span>Y/n<span class="o">)</span>
+<span class="gp">&gt;</span> How many articles per page <span class="k">do</span> you want? <span class="o">[</span><span class="m">10</span><span class="o">]</span>
+<span class="gp">&gt;</span> What is your <span class="nb">time</span> zone? <span class="o">[</span>Europe/Paris<span class="o">]</span> Europe/Madrid
+<span class="gp">&gt;</span> Do you want to generate a Fabfile/Makefile to automate generation and publishing? <span class="o">(</span>Y/n<span class="o">)</span>
+<span class="gp">&gt;</span> Do you want an auto-reload <span class="p">&amp;</span> simpleHTTP script to assist with theme and site development? <span class="o">(</span>Y/n<span class="o">)</span>
+<span class="gp">&gt;</span> Do you want to upload your website using FTP? <span class="o">(</span>y/N<span class="o">)</span>
+<span class="gp">&gt;</span> Do you want to upload your website using SSH? <span class="o">(</span>y/N<span class="o">)</span>
+<span class="gp">&gt;</span> Do you want to upload your website using Dropbox? <span class="o">(</span>y/N<span class="o">)</span>
+<span class="gp">&gt;</span> Do you want to upload your website using S3? <span class="o">(</span>y/N<span class="o">)</span>
+<span class="gp">&gt;</span> Do you want to upload your website using Rackspace Cloud Files? <span class="o">(</span>y/N<span class="o">)</span>
+<span class="gp">&gt;</span> Do you want to upload your website using GitHub Pages? <span class="o">(</span>y/N<span class="o">)</span> Y
+<span class="gp">&gt;</span> Is this your personal page <span class="o">(</span>username.github.io<span class="o">)</span>? <span class="o">(</span>y/N<span class="o">)</span> Y
+<span class="go">Error: [Errno 17] File exists: &#39;/Users/elhodred/code/Elhodred.github.io-src/output&#39;</span>
+<span class="go">Done. Your new project is available at /Users/elhodred/code/Elhodred.github.io-src</span>
+</pre></div>
+
+
+<p>Don't worry about the error, it's normal as we already created the output directory.<br>
+We just need to edit <em>publishconf.py</em> file and set <em>DELETE_OUTPUT_DIRECTORY</em> variable to <em>False</em>. This will prevent Pelican deleting the output directory each time you publish the site.</p>
+<h2>Makefile improvements</h2>
+<p>Pelican doesn't include a command to create new articles or pages. But that's very easy to fix. Edit the <em>Makefile</em> and add the following before <em>.PHONY</em></p>
+<div class="highlight"><pre><span></span><span class="nf">newpost</span><span class="o">:</span>
+<span class="cp">ifdef NAME</span>
+    <span class="nb">echo</span> <span class="s2">&quot;Title: </span><span class="k">$(</span>NAME<span class="k">)</span><span class="s2">&quot;</span> &gt;  <span class="k">$(</span>INPUTDIR<span class="k">)</span>/<span class="k">$(</span>SLUG<span class="k">)</span>.<span class="k">$(</span>EXT<span class="k">)</span>
+    <span class="nb">echo</span> <span class="s2">&quot;Slug: </span><span class="k">$(</span>SLUG<span class="k">)</span><span class="s2">&quot;</span> &gt;&gt; <span class="k">$(</span>INPUTDIR<span class="k">)</span>/<span class="k">$(</span>SLUG<span class="k">)</span>.<span class="k">$(</span>EXT<span class="k">)</span>
+    <span class="nb">echo</span> <span class="s2">&quot;Date: </span><span class="k">$(</span>DATE<span class="k">)</span><span class="s2">&quot;</span> &gt;&gt; <span class="k">$(</span>INPUTDIR<span class="k">)</span>/<span class="k">$(</span>SLUG<span class="k">)</span>.<span class="k">$(</span>EXT<span class="k">)</span>
+    <span class="nb">echo</span> <span class="s2">&quot;&quot;</span>              &gt;&gt; <span class="k">$(</span>INPUTDIR<span class="k">)</span>/<span class="k">$(</span>SLUG<span class="k">)</span>.<span class="k">$(</span>EXT<span class="k">)</span>
+    <span class="nb">echo</span> <span class="s2">&quot;&quot;</span>              &gt;&gt; <span class="k">$(</span>INPUTDIR<span class="k">)</span>/<span class="k">$(</span>SLUG<span class="k">)</span>.<span class="k">$(</span>EXT<span class="k">)</span>
+    <span class="si">${</span><span class="nv">EDITOR</span><span class="si">}</span> <span class="si">${</span><span class="nv">INPUTDIR</span><span class="si">}</span>/<span class="si">${</span><span class="nv">SLUG</span><span class="si">}</span>.<span class="si">${</span><span class="nv">EXT</span><span class="si">}</span>
+<span class="cp">else</span>
+    @echo <span class="s1">&#39;Variable NAME is not defined.&#39;</span>
+    @echo <span class="s1">&#39;Do make newpost NAME=&#39;</span><span class="s2">&quot;&#39;&quot;</span><span class="s1">&#39;Post Name&#39;</span><span class="s2">&quot;&#39;&quot;</span>
+<span class="cp">endif</span>
+
+<span class="nf">editpost</span><span class="o">:</span>
+<span class="cp">ifdef NAME</span>
+    <span class="si">${</span><span class="nv">EDITOR</span><span class="si">}</span> <span class="si">${</span><span class="nv">INPUTDIR</span><span class="si">}</span>/<span class="si">${</span><span class="nv">SLUG</span><span class="si">}</span>.<span class="si">${</span><span class="nv">EXT</span><span class="si">}</span>
+<span class="cp">else</span>
+    @echo <span class="s1">&#39;Variable NAME is not defined.&#39;</span>
+    @echo <span class="s1">&#39;Do make editpost NAME=&#39;</span><span class="s2">&quot;&#39;&quot;</span><span class="s1">&#39;Post Name&#39;</span><span class="s2">&quot;&#39;&quot;</span>
+<span class="cp">endif</span>
+
+<span class="nf">newpage</span><span class="o">:</span>
+<span class="cp">ifdef NAME</span>
+    <span class="nb">echo</span> <span class="s2">&quot;Title: </span><span class="k">$(</span>NAME<span class="k">)</span><span class="s2">&quot;</span> &gt;  <span class="k">$(</span>PAGESDIR<span class="k">)</span>/<span class="k">$(</span>SLUG<span class="k">)</span>.<span class="k">$(</span>EXT<span class="k">)</span>
+    <span class="nb">echo</span> <span class="s2">&quot;Slug: </span><span class="k">$(</span>SLUG<span class="k">)</span><span class="s2">&quot;</span> &gt;&gt; <span class="k">$(</span>PAGESDIR<span class="k">)</span>/<span class="k">$(</span>SLUG<span class="k">)</span>.<span class="k">$(</span>EXT<span class="k">)</span>
+    <span class="nb">echo</span> <span class="s2">&quot;&quot;</span>              &gt;&gt; <span class="k">$(</span>PAGESDIR<span class="k">)</span>/<span class="k">$(</span>SLUG<span class="k">)</span>.<span class="k">$(</span>EXT<span class="k">)</span>
+    <span class="nb">echo</span> <span class="s2">&quot;&quot;</span>              &gt;&gt; <span class="k">$(</span>PAGESDIR<span class="k">)</span>/<span class="k">$(</span>SLUG<span class="k">)</span>.<span class="k">$(</span>EXT<span class="k">)</span>
+    <span class="si">${</span><span class="nv">EDITOR</span><span class="si">}</span> <span class="si">${</span><span class="nv">PAGESDIR</span><span class="si">}</span>/<span class="si">${</span><span class="nv">SLUG</span><span class="si">}</span>.<span class="k">$(</span>EXT<span class="k">)</span>
+<span class="cp">else</span>
+    @echo <span class="s1">&#39;Variable NAME is not defined.&#39;</span>
+    @echo <span class="s1">&#39;Do make newpage NAME=&#39;</span><span class="s2">&quot;&#39;&quot;</span><span class="s1">&#39;Page Name&#39;</span><span class="s2">&quot;&#39;&quot;</span>
+<span class="cp">endif</span>
+
+<span class="nf">editpage</span><span class="o">:</span>
+<span class="cp">ifdef NAME</span>
+    <span class="si">${</span><span class="nv">EDITOR</span><span class="si">}</span> <span class="si">${</span><span class="nv">PAGESDIR</span><span class="si">}</span>/<span class="si">${</span><span class="nv">SLUG</span><span class="si">}</span>.<span class="k">$(</span>EXT<span class="k">)</span>
+<span class="cp">else</span>
+    @echo <span class="s1">&#39;Variable NAME is not defined.&#39;</span>
+    @echo <span class="s1">&#39;Do make editpage NAME=&#39;</span><span class="s2">&quot;&#39;&quot;</span><span class="s1">&#39;Page Name&#39;</span><span class="s2">&quot;&#39;&quot;</span>
+<span class="cp">endif</span>
+</pre></div>
+
+
+<p>And then modify .PHONY adding this at the end:</p>
+<div class="highlight"><pre><span></span>newpost editpost newpage editpage
+</pre></div>
+
+
+<p>Those are the new commands available using make. They allow you to create/edit articles(posts) and pages.</p>
+<p>To create a new post:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> make newpost <span class="nv">NAME</span><span class="o">=</span><span class="s1">&#39;The title for the post&#39;</span>
+</pre></div>
+
+
+<h2>Replacing the theme</h2>
+<p>Here you can find several themes for Pelican. In my case, as I want only one theme, I did the following.</p>
+<p>First, I chose <a href="https://github.com/PurePelicanTheme/pure/" target="_blank">Pure</a> as my theme. Then I forked it and added it as a submodule in my sources repository:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> mkdir themes
+<span class="gp">$</span> git submodule add https://github.com/Elhodred/pure.git themes/pure
+</pre></div>
+
+
+<p>This allows me to make my own changes to the theme while I can keep in sync the changes made by the original author.</p>
+<p>Finally, edit <em>pelicanconf.py</em> and add the following:</p>
+<div class="highlight"><pre><span></span><span class="n">THEME</span> <span class="o">=</span> <span class="s2">&quot;themes/pure&quot;</span>
+</pre></div>
+
+
+<h2>Testing your site</h2>
+<p>There are a few configuration options you can add to <em>pelicanconf.py</em>. Between them you will find the following ones:</p>
+<div class="highlight"><pre><span></span><span class="n">COVER_IMG_URL</span> <span class="o">=</span> <span class="s2">&quot;/images/sidebar.png&quot;</span>
+<span class="n">PROFILE_IMAGE_URL</span> <span class="o">=</span> <span class="s2">&quot;/images/profile.jpg&quot;</span>
+<span class="n">TAGLINE</span> <span class="o">=</span> <span class="s2">&quot;A Developer&#39;s journey&quot;</span>
+</pre></div>
+
+
+<p><em>COVER_IMG_URL</em> is the URL for the image to use on the left side of the page when listing posts.<br>
+<em>PROFILE_IMAGE_URL</em> is the image of the author of a post. Is the circle avatar shown on the left side of the page when a post is rendered. In the official Pure them it doesn't work despite what it says in the documentation as they use gravatar. I didn't want to use gravatar so I modified my fork to use again this variable.<br>
+<em>TAGLINE</em> is a text that appears below the blog title on the left side of the page.</p>
+<p>To let Pelican copy the images as static content, first create a directory called images under content folder:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> mkdir content/images
+</pre></div>
+
+
+<p>And then let <em>Pelican</em> know that it has to use that folder for static content. Add this to <em>pelicanconf.py</em>:</p>
+<div class="highlight"><pre><span></span><span class="n">STATIC_PATHS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;images&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Put the images you want to use in the images folder and update the <em>COVER_IMG_URL</em> and <em>PROFILE_IMAGE_URL</em> to match the names of your files.</p>
+<h2>Tweaking URL schema</h2>
+<p>If you want to have a better looking URL in the form <em>http://domain/postname</em> and, according to some SEO recomendations, better for the search engines, you can use the put the following in <em>pelicanconf.py</em>:</p>
+<div class="highlight"><pre><span></span><span class="n">ARTICLE_URL</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{slug}</span><span class="s1">/&#39;</span>
+<span class="n">ARTICLE_SAVE_AS</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{slug}</span><span class="s1">/index.html&#39;</span>
+<span class="n">PAGE_URL</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{slug}</span><span class="s1">/&#39;</span>
+<span class="n">PAGE_SAVE_AS</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{slug}</span><span class="s1">/index.html&#39;</span>
+</pre></div>
+
+
+<h2>Publish your site</h2>
+<p>First, we need to regenerate the site with <em>production</em> settings:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> make publish
+</pre></div>
+
+
+<p>Then, go to the <em>output</em> directory and commit and push as usual:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> output
+<span class="gp">$</span> git add .
+<span class="gp">$</span> git commit -m <span class="s1">&#39;First post&#39;</span>
+<span class="gp">$</span> git push origin master
+</pre></div>
+
+
+<p>Congratulations, your site should be online.</p>
+            <div class="hr"></div>
+            <a href="#" class="go-top">Go Top</a>
+<footer class="footer">
+    <p>&copy; Alfonso Pinto's Notebook
+            &ndash; <a href="https://github.com/Elhodred/Elhodred.github.io-src">Source</a>
+            &ndash; <a href="https://alfonso-pinto.com/feeds/all.atom.xml">RSS</a>
+            &ndash; <a href="http://blog.getpelican.com/">Pelican</a>
+            &ndash; <a href="https://github.com/Elhodred/pure">PurePelican (fork)</a>
+    </p>
+</footer>        </div>
+    </div>
+</div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+    <script src="/assets/auto-target.js"></script>
+</body>
+</html>

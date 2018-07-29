@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Alfonso Pinto's Notebook</title><link href="https://alfonso-pinto.com/" rel="alternate"></link><link href="https://alfonso-pinto.com/feeds/all.atom.xml" rel="self"></link><id>https://alfonso-pinto.com/</id><updated>2018-07-25T18:48:43+02:00</updated><entry><title>Blogging with Pelican</title><link href="https://alfonso-pinto.com/blogging-with-pelican/" rel="alternate"></link><published>2018-07-25T18:48:43+02:00</published><updated>2018-07-25T18:48:43+02:00</updated><author><name>Alfonso Pinto</name></author><id>tag:alfonso-pinto.com,2018-07-25:/blogging-with-pelican/</id><summary type="html">&lt;p&gt;How this blog is made&lt;/p&gt;</summary><content type="html">&lt;p&gt;The blog is made using &lt;a href="https://blog.getpelican.com" target="_blank"&gt;Pelican&lt;/a&gt; and it's published using &lt;a href="https://pages.github.com" target="_blank"&gt;GitHub Pages&lt;/a&gt;
+To create the basic setup I mostly followed &lt;a href="https://fedoramagazine.org/make-github-pages-blog-with-pelican/" target="_blank"&gt;this guide&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Install Pelican&lt;/h2&gt;
+&lt;p&gt;To install Pelican you just need to install &lt;em&gt;pelican&lt;/em&gt; and &lt;em&gt;markdown&lt;/em&gt; python modules:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; pip install pelican markdown
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You may need to use sudo, it depends on your setup.&lt;/p&gt;
+&lt;p&gt;If you check Pelican docs, you will see that they recomend to use virtualenv. I didn't feel it necessary, but if you want to use it, be my guess.&lt;/p&gt;
+&lt;h2&gt;Create a GitHub user page&lt;/h2&gt;
+&lt;p&gt;GitHub allows to create &lt;em&gt;project pages&lt;/em&gt; and one &lt;em&gt;user page&lt;/em&gt;. &lt;em&gt;Project pages&lt;/em&gt; are tied to a specific project while &lt;em&gt;user pages&lt;/em&gt; are generic.&lt;/p&gt;
+&lt;p&gt;The first step is to create 2 new repositories in your GitHub account. You know the drill, or just go &lt;a href="https://github.com/new" target="_blank"&gt;here&lt;/a&gt;&lt;br&gt;
+Both of the repositories must be &lt;em&gt;Public&lt;/em&gt; and initialized with a README file.&lt;br&gt;
+The first repository must be named &lt;em&gt;username.github.io&lt;/em&gt;. Replace &lt;em&gt;username&lt;/em&gt; with your username in GitHub. In my case, as my user is &lt;em&gt;Elhodred&lt;/em&gt;, the repository is named &lt;em&gt;Elhodred.github.io&lt;/em&gt;. This repository will contain the static site Pelican generates.&lt;br&gt;
+The second repository can be named as you want, but my recomendation is to name it &lt;em&gt;username.github.io-src&lt;/em&gt;. In my case, it becomes &lt;em&gt;Elhodred.github.io-src&lt;/em&gt;. This way we identity directly this repository for what it really is: the repository that holds the sources of the blog.&lt;/p&gt;
+&lt;h2&gt;Setup the basic blog&lt;/h2&gt;
+&lt;p&gt;Let's clone the source repository:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; git clone https://github.com/Elhodred/Elhodred.github.io-src.git
+&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;cd&lt;/span&gt; Elhodred.github.io-src/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Remember to replace the URL with the one for your repository.&lt;/p&gt;
+&lt;p&gt;Now we will add the repository that will hold the site as a submodule:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; git submodule add https://github.com/Elhodred/Elhodred.github.io.git output
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;At this point, we can create our site:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; pelican-quickstart
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Where &lt;span class="k"&gt;do&lt;/span&gt; you want to create your new web site? &lt;span class="o"&gt;[&lt;/span&gt;.&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; What will be the title of this web site? Elhodred&lt;span class="se"&gt;\&amp;#39;&lt;/span&gt;s Notebook
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Who will be the author of this web site? Alfonso Pinto
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; What will be the default language of this web site? &lt;span class="o"&gt;[&lt;/span&gt;en&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Do you want to specify a URL prefix? e.g., http://example.com   &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt; y
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; What is your URL prefix? &lt;span class="o"&gt;(&lt;/span&gt;see above example&lt;span class="p"&gt;;&lt;/span&gt; no trailing slash&lt;span class="o"&gt;)&lt;/span&gt; https://elhodred.github.io
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Do you want to &lt;span class="nb"&gt;enable&lt;/span&gt; article pagination? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; How many articles per page &lt;span class="k"&gt;do&lt;/span&gt; you want? &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; What is your &lt;span class="nb"&gt;time&lt;/span&gt; zone? &lt;span class="o"&gt;[&lt;/span&gt;Europe/Paris&lt;span class="o"&gt;]&lt;/span&gt; Europe/Madrid
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Do you want to generate a Fabfile/Makefile to automate generation and publishing? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Do you want an auto-reload &lt;span class="p"&gt;&amp;amp;&lt;/span&gt; simpleHTTP script to assist with theme and site development? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Do you want to upload your website using FTP? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Do you want to upload your website using SSH? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Do you want to upload your website using Dropbox? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Do you want to upload your website using S3? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Do you want to upload your website using Rackspace Cloud Files? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Do you want to upload your website using GitHub Pages? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; Y
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Is this your personal page &lt;span class="o"&gt;(&lt;/span&gt;username.github.io&lt;span class="o"&gt;)&lt;/span&gt;? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; Y
+&lt;span class="go"&gt;Error: [Errno 17] File exists: &amp;#39;/Users/elhodred/code/Elhodred.github.io-src/output&amp;#39;&lt;/span&gt;
+&lt;span class="go"&gt;Done. Your new project is available at /Users/elhodred/code/Elhodred.github.io-src&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Don't worry about the error, it's normal as we already created the output directory.&lt;br&gt;
+We just need to edit &lt;em&gt;publishconf.py&lt;/em&gt; file and set &lt;em&gt;DELETE_OUTPUT_DIRECTORY&lt;/em&gt; variable to &lt;em&gt;False&lt;/em&gt;. This will prevent Pelican deleting the output directory each time you publish the site.&lt;/p&gt;
+&lt;h2&gt;Makefile improvements&lt;/h2&gt;
+&lt;p&gt;Pelican doesn't include a command to create new articles or pages. But that's very easy to fix. Edit the &lt;em&gt;Makefile&lt;/em&gt; and add the following before &lt;em&gt;.PHONY&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;newpost&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="cp"&gt;ifdef NAME&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Title: &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;NAME&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &amp;gt;  &lt;span class="k"&gt;$(&lt;/span&gt;INPUTDIR&lt;span class="k"&gt;)&lt;/span&gt;/&lt;span class="k"&gt;$(&lt;/span&gt;SLUG&lt;span class="k"&gt;)&lt;/span&gt;.&lt;span class="k"&gt;$(&lt;/span&gt;EXT&lt;span class="k"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Slug: &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;SLUG&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; &lt;span class="k"&gt;$(&lt;/span&gt;INPUTDIR&lt;span class="k"&gt;)&lt;/span&gt;/&lt;span class="k"&gt;$(&lt;/span&gt;SLUG&lt;span class="k"&gt;)&lt;/span&gt;.&lt;span class="k"&gt;$(&lt;/span&gt;EXT&lt;span class="k"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Date: &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;DATE&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; &lt;span class="k"&gt;$(&lt;/span&gt;INPUTDIR&lt;span class="k"&gt;)&lt;/span&gt;/&lt;span class="k"&gt;$(&lt;/span&gt;SLUG&lt;span class="k"&gt;)&lt;/span&gt;.&lt;span class="k"&gt;$(&lt;/span&gt;EXT&lt;span class="k"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;              &amp;gt;&amp;gt; &lt;span class="k"&gt;$(&lt;/span&gt;INPUTDIR&lt;span class="k"&gt;)&lt;/span&gt;/&lt;span class="k"&gt;$(&lt;/span&gt;SLUG&lt;span class="k"&gt;)&lt;/span&gt;.&lt;span class="k"&gt;$(&lt;/span&gt;EXT&lt;span class="k"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;              &amp;gt;&amp;gt; &lt;span class="k"&gt;$(&lt;/span&gt;INPUTDIR&lt;span class="k"&gt;)&lt;/span&gt;/&lt;span class="k"&gt;$(&lt;/span&gt;SLUG&lt;span class="k"&gt;)&lt;/span&gt;.&lt;span class="k"&gt;$(&lt;/span&gt;EXT&lt;span class="k"&gt;)&lt;/span&gt;
+    &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;EDITOR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;INPUTDIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;SLUG&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;.&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;EXT&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+&lt;span class="cp"&gt;else&lt;/span&gt;
+    @echo &lt;span class="s1"&gt;&amp;#39;Variable NAME is not defined.&amp;#39;&lt;/span&gt;
+    @echo &lt;span class="s1"&gt;&amp;#39;Do make newpost NAME=&amp;#39;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;#39;&amp;quot;&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Post Name&amp;#39;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;#39;&amp;quot;&lt;/span&gt;
+&lt;span class="cp"&gt;endif&lt;/span&gt;
+
+&lt;span class="nf"&gt;editpost&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="cp"&gt;ifdef NAME&lt;/span&gt;
+    &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;EDITOR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;INPUTDIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;SLUG&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;.&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;EXT&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+&lt;span class="cp"&gt;else&lt;/span&gt;
+    @echo &lt;span class="s1"&gt;&amp;#39;Variable NAME is not defined.&amp;#39;&lt;/span&gt;
+    @echo &lt;span class="s1"&gt;&amp;#39;Do make editpost NAME=&amp;#39;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;#39;&amp;quot;&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Post Name&amp;#39;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;#39;&amp;quot;&lt;/span&gt;
+&lt;span class="cp"&gt;endif&lt;/span&gt;
+
+&lt;span class="nf"&gt;newpage&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="cp"&gt;ifdef NAME&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Title: &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;NAME&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &amp;gt;  &lt;span class="k"&gt;$(&lt;/span&gt;PAGESDIR&lt;span class="k"&gt;)&lt;/span&gt;/&lt;span class="k"&gt;$(&lt;/span&gt;SLUG&lt;span class="k"&gt;)&lt;/span&gt;.&lt;span class="k"&gt;$(&lt;/span&gt;EXT&lt;span class="k"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Slug: &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;SLUG&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; &lt;span class="k"&gt;$(&lt;/span&gt;PAGESDIR&lt;span class="k"&gt;)&lt;/span&gt;/&lt;span class="k"&gt;$(&lt;/span&gt;SLUG&lt;span class="k"&gt;)&lt;/span&gt;.&lt;span class="k"&gt;$(&lt;/span&gt;EXT&lt;span class="k"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;              &amp;gt;&amp;gt; &lt;span class="k"&gt;$(&lt;/span&gt;PAGESDIR&lt;span class="k"&gt;)&lt;/span&gt;/&lt;span class="k"&gt;$(&lt;/span&gt;SLUG&lt;span class="k"&gt;)&lt;/span&gt;.&lt;span class="k"&gt;$(&lt;/span&gt;EXT&lt;span class="k"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;              &amp;gt;&amp;gt; &lt;span class="k"&gt;$(&lt;/span&gt;PAGESDIR&lt;span class="k"&gt;)&lt;/span&gt;/&lt;span class="k"&gt;$(&lt;/span&gt;SLUG&lt;span class="k"&gt;)&lt;/span&gt;.&lt;span class="k"&gt;$(&lt;/span&gt;EXT&lt;span class="k"&gt;)&lt;/span&gt;
+    &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;EDITOR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;PAGESDIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;SLUG&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;.&lt;span class="k"&gt;$(&lt;/span&gt;EXT&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;span class="cp"&gt;else&lt;/span&gt;
+    @echo &lt;span class="s1"&gt;&amp;#39;Variable NAME is not defined.&amp;#39;&lt;/span&gt;
+    @echo &lt;span class="s1"&gt;&amp;#39;Do make newpage NAME=&amp;#39;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;#39;&amp;quot;&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Page Name&amp;#39;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;#39;&amp;quot;&lt;/span&gt;
+&lt;span class="cp"&gt;endif&lt;/span&gt;
+
+&lt;span class="nf"&gt;editpage&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="cp"&gt;ifdef NAME&lt;/span&gt;
+    &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;EDITOR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;PAGESDIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;SLUG&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;.&lt;span class="k"&gt;$(&lt;/span&gt;EXT&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;span class="cp"&gt;else&lt;/span&gt;
+    @echo &lt;span class="s1"&gt;&amp;#39;Variable NAME is not defined.&amp;#39;&lt;/span&gt;
+    @echo &lt;span class="s1"&gt;&amp;#39;Do make editpage NAME=&amp;#39;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;#39;&amp;quot;&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Page Name&amp;#39;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;#39;&amp;quot;&lt;/span&gt;
+&lt;span class="cp"&gt;endif&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And then modify .PHONY adding this at the end:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;newpost editpost newpage editpage
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Those are the new commands available using make. They allow you to create/edit articles(posts) and pages.&lt;/p&gt;
+&lt;p&gt;To create a new post:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; make newpost &lt;span class="nv"&gt;NAME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;The title for the post&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Replacing the theme&lt;/h2&gt;
+&lt;p&gt;Here you can find several themes for Pelican. In my case, as I want only one theme, I did the following.&lt;/p&gt;
+&lt;p&gt;First, I chose &lt;a href="https://github.com/PurePelicanTheme/pure/" target="_blank"&gt;Pure&lt;/a&gt; as my theme. Then I forked it and added it as a submodule in my sources repository:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; mkdir themes
+&lt;span class="gp"&gt;$&lt;/span&gt; git submodule add https://github.com/Elhodred/pure.git themes/pure
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This allows me to make my own changes to the theme while I can keep in sync the changes made by the original author.&lt;/p&gt;
+&lt;p&gt;Finally, edit &lt;em&gt;pelicanconf.py&lt;/em&gt; and add the following:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;THEME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;themes/pure&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Testing your site&lt;/h2&gt;
+&lt;p&gt;There are a few configuration options you can add to &lt;em&gt;pelicanconf.py&lt;/em&gt;. Between them you will find the following ones:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;COVER_IMG_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/images/sidebar.png&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;PROFILE_IMAGE_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/images/profile.jpg&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;TAGLINE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;A Developer&amp;#39;s journey&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;COVER_IMG_URL&lt;/em&gt; is the URL for the image to use on the left side of the page when listing posts.&lt;br&gt;
+&lt;em&gt;PROFILE_IMAGE_URL&lt;/em&gt; is the image of the author of a post. Is the circle avatar shown on the left side of the page when a post is rendered. In the official Pure them it doesn't work despite what it says in the documentation as they use gravatar. I didn't want to use gravatar so I modified my fork to use again this variable.&lt;br&gt;
+&lt;em&gt;TAGLINE&lt;/em&gt; is a text that appears below the blog title on the left side of the page.&lt;/p&gt;
+&lt;p&gt;To let Pelican copy the images as static content, first create a directory called images under content folder:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; mkdir content/images
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And then let &lt;em&gt;Pelican&lt;/em&gt; know that it has to use that folder for static content. Add this to &lt;em&gt;pelicanconf.py&lt;/em&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;STATIC_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;images&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Put the images you want to use in the images folder and update the &lt;em&gt;COVER_IMG_URL&lt;/em&gt; and &lt;em&gt;PROFILE_IMAGE_URL&lt;/em&gt; to match the names of your files.&lt;/p&gt;
+&lt;h2&gt;Tweaking URL schema&lt;/h2&gt;
+&lt;p&gt;If you want to have a better looking URL in the form &lt;em&gt;http://domain/postname&lt;/em&gt; and, according to some SEO recomendations, better for the search engines, you can use the put the following in &lt;em&gt;pelicanconf.py&lt;/em&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;ARTICLE_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;{slug}&lt;/span&gt;&lt;span class="s1"&gt;/&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;ARTICLE_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;{slug}&lt;/span&gt;&lt;span class="s1"&gt;/index.html&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;PAGE_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;{slug}&lt;/span&gt;&lt;span class="s1"&gt;/&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;PAGE_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;{slug}&lt;/span&gt;&lt;span class="s1"&gt;/index.html&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Publish your site&lt;/h2&gt;
+&lt;p&gt;First, we need to regenerate the site with &lt;em&gt;production&lt;/em&gt; settings:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; make publish
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then, go to the &lt;em&gt;output&lt;/em&gt; directory and commit and push as usual:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;cd&lt;/span&gt; output
+&lt;span class="gp"&gt;$&lt;/span&gt; git add .
+&lt;span class="gp"&gt;$&lt;/span&gt; git commit -m &lt;span class="s1"&gt;&amp;#39;First post&amp;#39;&lt;/span&gt;
+&lt;span class="gp"&gt;$&lt;/span&gt; git push origin master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Congratulations, your site should be online.&lt;/p&gt;</content><category term="blog"></category><category term="pelican"></category><category term="python"></category></entry></feed>
